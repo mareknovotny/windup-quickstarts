@@ -7,9 +7,9 @@
       <version>2.5.0-SNAPSHOT</version>
    </parent>
    <artifactId>maven-project</artifactId>
-   <description>This example shows how to use Windup for generating reports natively in Maven project</description>
+   <description>This example shows how to use Windup for generating reports in Maven project</description>
 
-   <name>Windup Quickstart: maven-embedding</name>
+   <name>Windup Quickstart: maven-project</name>
 
    <licenses>
       <license>
