@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset id="maven-deps"
+    xmlns="http://windup.jboss.org/schema/jboss-ruleset" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://windup.jboss.org/schema/jboss-ruleset http://windup.jboss.org/schema/windup-jboss-ruleset.xsd">
+    <metadata>
+        <description>
+            This ruleset looks for Java files that contain special maven dependency rules.
+        </description>
+        <dependencies>
+            <addon id="org.jboss.windup.rules,windup-rules-java,2.3.0.Final"/>
+        </dependencies>
+        <sourceTechnology id="proprietary" versionRange="(10,12]"/>
+        <targetTechnology id="eap" versionRange="[6,)"/>
+        <tag>reviewed-2015-09-24</tag>
+    </metadata>
+    <rules>
+        <rule id="maven-deps-01000">
+            <when>
+                 <xmlfile in="pom.xml" matches="//*[local-name()='artifactId' and text()='jackson-jaxrs-json-provider']" />
+             </when>
+             <perform>
+                 <hint effort="1" severity="mandatory" title="CUSTOM_PACKAGE" >
+                     <message>Found dependency</message>
+                 </hint>
+             </perform>
+        </rule>
+        <rule id="maven-deps-02000">
+            <when>
+                <project>
+                     <artifact artifactId="jackson-jaxrs-json-provider" groupId="com.fasterxml.jackson.jaxrs" />
+                 </project>
+             </when>
+             <perform>
+                <lineitem message="jackson-jaxrs-json-provider dependency found on application"/>
+            </perform>
+        </rule>
+    </rules>
+</ruleset>
